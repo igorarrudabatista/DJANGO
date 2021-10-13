@@ -79,10 +79,6 @@ def createvendedores(request):
         })
 
 
-
-
-
-
 @login_required
 def create(request):
     if request.method == 'POST':
