@@ -6,6 +6,17 @@ def upload_image_carros(instance, filename):
 
 # Create your models here.
 
+class Orcamentos(models.Model):
+    quantidade = models.IntegerField()
+    descricao = models.CharField(max_length=250)
+    precoUnitario = models.IntegerField()
+    subTotal = models.IntegerField()
+    total = models.IntegerField()
+    frete = models.IntegerField()
+    taxas = models.IntegerField()
+
+
+
 class Carros(models.Model):
     modelo = models.CharField(max_length=150)
     marca = models.CharField(max_length=100)
@@ -13,6 +24,8 @@ class Carros(models.Model):
     image = models.ImageField(upload_to='media/')
     class Meta:
         db_table = "app_carros"
+
+
 
 class Vendedores(models.Model):
     nome = models.CharField(max_length=150)

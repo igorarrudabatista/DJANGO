@@ -1,0 +1,44 @@
+
+ {% extends 'base.html' %}
+
+
+ {% block content %}
+   
+    <!--sidebar end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+
+    <section id="main-content">
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> HOME INDEX </h3>
+        <center>
+<center>
+<form method="get">
+<input type="text" id="search" name="search" class="form-control" placeholder="Procurar..."
+
+      <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{%else%}/createvendedores/{%endif%}" method="post">
+
+{% csrf_token %}
+              <div class="form-group mt-4"> Nome: {{cadvendedores.nome}} </div>
+              <div class="form-group mt-4">  Telefone : {{cadvendedores.telefone}} </div>
+              <div class="form-group mt-4"> Data de Nascimento: {{cadvendedores.nascimento}}  
+              <div class="form-group mt-4">   Função: {{cadvendedores.funcao}}  </div>
+              <div class="form-group mt-4">  Endereço: {{cadvendedores.endereco}} </div>
+              <div class="form-group mt-4">  Estado: {{cadvendedores.estado}}  </div>
+              <div class="form-group mt-4">   Cidade : {{cadvendedores.cidade}}  </div>
+              <div class="form-group mt-4">    CEP: {{cadvendedores.cep}}  </div>
+              <div class="form-group mt-4">    Rua: {{cadvendedores.rua}}  </div>
+              <div class="form-group mt-4">    Foto: {{cadvendedores.foto}}  </div>
+
+          <input type="submit" class="btn btn-success" value="Salvar">
+
+
+                </form>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+    <!--footer start-->
+
+    {% endblock %}
+ 

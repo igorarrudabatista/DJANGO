@@ -3,7 +3,7 @@ from django.core import paginator
 from django.http import request
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
-from app.forms import CarrosForm, VendedoresForm
+from app.forms import CarrosForm, OrcamentosForm, VendedoresForm
 from app.models import Carros, Vendedores
 from django.core.paginator import Paginator
 from django.core.files.storage import FileSystemStorage
@@ -64,6 +64,12 @@ def cadvendedores(request):
     data = {}
     data ['cadvendedores'] = VendedoresForm()
     return render (request, 'cadvendedores.html', data)
+
+@login_required
+def cadorcamentos(request):
+    data = {}
+    data ['cadorcamentos'] = OrcamentosForm()
+    return render (request, 'cad_orcamentos.html', data)
 
 @login_required
 def createvendedores(request):

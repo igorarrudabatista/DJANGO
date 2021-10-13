@@ -1,7 +1,25 @@
-from django.forms import ModelForm
-from app.models import Carros, Vendedores
+from django.db.models import fields
+from django.db.models.base import Model
+from django.forms import ModelForm, widgets
+from app.models import Carros, Vendedores, Orcamentos
 from django import forms
 from .models import *
+
+class OrcamentosForm(ModelForm):
+    class Meta:
+        model = Orcamentos
+        fields = ['quantidade', 'descricao', 'precoUnitario', 'subTotal', 'total', 'frete', 'taxas']
+
+        widgets = {
+            'quantidade':forms.TextInput(attrs={'class':'form-control'}),
+            'descricao':forms.TextInput(attrs={'class':'form-control'}),
+            'precoUnitario':forms.TextInput(attrs={'class':'form-control'}),
+            'subTotal':forms.TextInput(attrs={'class':'form-control'}),
+            'total':forms.TextInput(attrs={'class':'form-control'}),
+            'frete':forms.TextInput(attrs={'class':'form-control'}),
+            'taxas':forms.TextInput(attrs={'class':'form-control'}),
+            
+        }
 
 
 class CarrosForm(ModelForm):
