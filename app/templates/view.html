@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+ <section id="main-content">
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> HOME INDEX </h3>
+        <center>
+<center>
+
+
+  <center>
+    <form method="get">
+    <strong> Modelo: </strong> {{db.modelo}} <br>
+    <strong> Marca: </strong> {{db.marca}} <br>
+    <strong> Ano: </strong> {{db.ano}} <br>
+       {% if db.image %}
+    <strong> Imagem: </strong> <br> <img src="{{db.image.url}}" width="300"/> <br> <br> <br> <br><br> <br> <br> <br>
+
+ 
+       {%endif%}
+
+
+
+
+
+    </center>
+</div>
+</html>
+
+{% endblock %}

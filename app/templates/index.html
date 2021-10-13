@@ -1,0 +1,79 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+ <section id="main-content">
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> HOME INDEX </h3>
+        <center>
+<center>
+<form method="get">
+<input type="text" id="search" name="search" class="form-control" placeholder="Procurar..."
+
+
+<br> <br>
+ <a href="/form " class="btn btn-success" > Adicionar </a> </center>
+
+ </center> </body>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Marca</th>
+      <th scope="col">Ano</th>
+      <th scope="col">Ações</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for dbs in db %}
+    <tr>
+    
+
+    {% if dbs.image %}
+      <td><img src="{{dbs.image.url}}" width="100"/> </td>
+      {%endif%}      
+      <td>{{dbs.modelo}}</td>
+      <td>{{dbs.marca}}</td>
+      <td>{{dbs.ano}}</td>
+
+
+  
+      <td> 
+          <a href="/view/{{dbs.id}}/"  class="btn btn-success"> Visualizar </a>
+          <a href="/edit/{{dbs.id}}/"   class="btn btn-primary"> Editar </a>
+          <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel"> Deletar </a>
+
+      </td>
+    </tr>
+
+  {% endfor %}
+
+    
+  </tbody>
+</table>
+
+</div>
+<div class="pagination">
+    {% if db.has_previous %}
+        <a href="?page={{db.previous_page_number}}"> < Voltar </a>
+
+    {%endif%}
+
+    {{db.number}}
+
+    {% if db.has_next%}
+      <a href="?page={{db.next_page_number}}"> > Próximo </a>
+
+    {% endif %}
+
+</div></div></div>
+
+
+           {%endblock%}
