@@ -69,7 +69,13 @@ def cadvendedores(request):
 
 @login_required
 def orcamentos(request):
-    return render(request,'orcamentos.html')
+    data     = {}
+    search   = request.GET.get('search')
+    if search:
+        data['db'] = Orcamentos.objects.filter(nome__icontains=search)
+    else:
+        data['db'] = Orcamentos.objects.all()
+    return render(request, 'orcamentos.html', data)
 
 @login_required
 def cadorcamentos(request):
@@ -77,6 +83,15 @@ def cadorcamentos(request):
     data ['cadorcamentos'] = OrcamentosForm()
     return render (request, 'cadorcamentos.html', data)
 
+@login_required
+def listar_orcamentos(request):
+    data     = {}
+    search   = request.GET.get('search')
+    if search:
+        data['db'] = Orcamentos.objects.filter(nome__icontains=search)
+    else:
+        data['db'] = Orcamentos.objects.all()
+    return render(request, 'listar_orcamentos.html', data)  
 
 @login_required
 def createorcamentos(request):
@@ -90,11 +105,17 @@ def createorcamentos(request):
         return render(request, 'cadorcamentos.html', {
             'form': form
         })
+
+@login_required
+def view_orcamentos (request, pk):
+    data = {}
+    data['db'] = Orcamentos.objects.get(pk=pk)
+    return render(request, 'view_orcamentos.html', data)
+
 ###
 ### FIM CADASTRO DE ORCAMENTOS
 ###
 
-@login_required
 def createvendedores(request):
         if request.method == 'POST':
             form = VendedoresForm(request.POST, request.FILES)
@@ -108,7 +129,6 @@ def createvendedores(request):
         })
 
 
-@login_required
 def create(request):
     if request.method == 'POST':
         form = CarrosForm(request.POST, request.FILES)
@@ -124,12 +144,6 @@ def create(request):
 def sucesso(request):
     return HttpResponse('Sucesso!!!')
 
-
-# def create(request):
-#     form = CarrosForm(request.POST, request.FILES)
-#     if form.is_valid():
-#         form.save()
-#         return redirect('form')
 
 def display_image(request):
     if request.method =='GET':

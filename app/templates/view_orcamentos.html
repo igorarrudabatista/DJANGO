@@ -1,10 +1,8 @@
-
 {% extends 'base.html' %}
-  
 
- 
+{% load static %}
+
 {% block content %}
-
 
    
    <!--sidebar end-->
@@ -52,7 +50,7 @@
                     <br>
                     <div>      
                       <div class="pull-left"> ORÇAMENTO Nº : </div>
-                      <div class="pull-right"> {{dbs.id}} </div>
+                      <div class="pull-right"> {{db.id}} </div>
                       <div class="clearfix"></div>  
                     </div>
                     <div>
@@ -77,35 +75,35 @@
                   <thead>
                     <tr>
                       <th style="width:60px" class="text-center">QTD.</th>
-                      <th class="text-left">DESCRICAO</th>
-                      <th style="width:140px" class="text-right">VALOR UNITARIO</th>
+                      <th class="text-left">DESCRIÇÃO</th>
+                      <th style="width:140px" class="text-right">VALOR UNITÁRIO</th>
                       <th style="width:90px" class="text-right">TOTAL</th>
                     </tr>
                   </thead>
                   <tbody>
                               
                     <tr>                     
-                      <td class="text-center">{{dbs.quantidade}}</td>
+                      <td class="text-center">{{db.quantidade}}</td>
                       <td>{{dbs.descricao}}</td>
-                      <td class="text-right">R${{dbs.precoUnitario}}</td>
-                      <td class="text-right">R${{dbs.total}}</td>
+                      <td class="text-right">R${{db.precoUnitario}}</td>
+                      <td class="text-right">R$'{{db.total}} * {{db.precoUnitario}}'</td>
                     </tr>
                             
                    
                     <tr>
                       <td colspan="2" rowspan="4">
-                        <h4>Terms and Conditions</h4>
+                        <h4>Termos e Condições</h4>
                         <p>Thank you for your business. We do expect payment within 21 days, so please process this invoice within that time. There will be a 1.5% interest charge per month on late invoices.</p>
                         <td class="text-right"><strong>Subtotal</strong></td>
-                        <td class="text-right">R${{dbs.subTotal}}</td>
+                        <td class="text-right">R${{db.subTotal}}</td>
                     </tr>
                     <tr>
                       <td class="text-right no-border"><strong>Frete</strong></td>
-                      <td class="text-right">R$ {{dbs.frete}}</td>
+                      <td class="text-right">R$ {{db.frete}}</td>
                     </tr>
                     <tr>
                       <td class="text-right no-border"><strong>Taxas</strong></td>
-                      <td class="text-right">R${{dbs.taxas}}</td>
+                      <td class="text-right">R${{db.taxas}}</td>
                     </tr>
                     <tr>
                       <td class="text-right no-border">
