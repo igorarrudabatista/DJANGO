@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from app.views import home, form, create, view, edit, update, delete, base, general, createvendedores, cadvendedores, vendedores, bloqueartela, sucesso, cadorcamentos
+from app.views import home, form, create, view, edit, update, delete, base, general, createvendedores, cadvendedores, vendedores, bloqueartela, sucesso, cadorcamentos, createorcamentos
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url, include
@@ -18,6 +18,7 @@ urlpatterns = [
         path('createvendedores/', createvendedores, name='createvendedores'),
         path('cadvendedores/', cadvendedores, name='cadvendedores'),
         path('cadorcamentos/', cadorcamentos, name='cadorcamentos'),
+        path('createorcamentos', createorcamentos, name='createorcamentos'),
 
        # path('viewvendedores/', viewvendedores, name='viewvendedores'),
         path('vendedores/', vendedores, name='vendedores'),

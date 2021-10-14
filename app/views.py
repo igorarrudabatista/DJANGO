@@ -4,7 +4,7 @@ from django.http import request
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from app.forms import CarrosForm, OrcamentosForm, VendedoresForm
-from app.models import Carros, Vendedores
+from app.models import Carros, Vendedores, Orcamentos
 from django.core.paginator import Paginator
 from django.core.files.storage import FileSystemStorage
 
@@ -43,8 +43,6 @@ def form(request):
      data ['form'] = CarrosForm()
      return render (request, 'form.html', data)
 
-
-
 @login_required
 def bloqueartela(request):
     return render(request, 'bloqueartela.html')
@@ -65,11 +63,32 @@ def cadvendedores(request):
     data ['cadvendedores'] = VendedoresForm()
     return render (request, 'cadvendedores.html', data)
 
+###
+### CADASTRO DE ORCAMENTOS
+###
 @login_required
 def cadorcamentos(request):
     data = {}
     data ['cadorcamentos'] = OrcamentosForm()
     return render (request, 'cad_orcamentos.html', data)
+
+@login_required
+def createorcamentos(request):
+        if request.method == 'POST':
+            form = OrcamentosForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('sucesso')
+        else:
+            form = OrcamentosForm()
+        return render(request, 'cad_orcamentos.html', {
+            'form': form
+        })
+
+###
+### FIM CADASTRO DE ORCAMENTOS
+###
+
 
 @login_required
 def createvendedores(request):
@@ -123,8 +142,6 @@ def vendedores(request):
     else:
         data['db'] = Vendedores.objects.all()
     return render(request, 'vendedores.html', data)
-
-
 
 
 @login_required
