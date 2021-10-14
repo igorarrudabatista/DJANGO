@@ -73,13 +73,9 @@ def orcamentos(request):
 
 @login_required
 def cadorcamentos(request):
-     data = {}
-     search = request.GET.get('search')
-     if search:
-            data['db'] = Orcamentos.objects.filter(nome__icontains=search)
-     else:
-            data['db'] = Orcamentos.objects.all()
-            return render(request, 'orcamentos.html', data)
+    data = {}
+    data ['cadorcamentos'] = OrcamentosForm()
+    return render (request, 'cadorcamentos.html', data)
 
 
 @login_required
@@ -87,11 +83,11 @@ def createorcamentos(request):
         if request.method == 'POST':
             form = OrcamentosForm(request.POST)
             if form.is_valid():
-               form.save()
-            return redirect('sucesso')
+                form.save()
+                return redirect('sucesso')
         else:
             form = OrcamentosForm()
-        return render(request, 'cad_orcamentos.html', {
+        return render(request, 'cadorcamentos.html', {
             'form': form
         })
 ###
