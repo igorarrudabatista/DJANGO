@@ -26,20 +26,17 @@
             <div class="col-lg-12">
               <div class="form-panel">
 
-      <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{%else%}/createorcamentos/{%endif%}" method="post">
-
-{% csrf_token %}
-              <div class="form-group mt-4"> Quantidade: {{cadorcamentos.quantidade}} </div>
-              <div class="form-group mt-4">  Descricao : {{cadorcamentos.descricao}} </div>
-              <div class="form-group mt-4"> Valor Unitario: {{cadorcamentos.precoUnitario}}  
-              <div class="form-group mt-4">   SubTotal: {{cadorcamentos.subTotal}}  </div>
-              <div class="form-group mt-4">  Total: {{cadorcamentos.total}} </div>
-              <div class="form-group mt-4">  Frete: {{cadorcamentos.frete}}  </div>
-              <div class="form-group mt-4">   Taxas : {{cadorcamentos.taxas}}  </div>
+      <form name="form" id="form" action="/createorcamentos/" method="post">
+          {% csrf_token %}
+              <div class="form-group mt-4">   Quantidade:     {{cadorcamentos.quantidade}} </div>
+              <div class="form-group mt-4">   Descricao :     {{cadorcamentos.descricao}} </div>
+              <div class="form-group mt-4">   Valor Unitario: {{cadorcamentos.precoUnitario}}  
+              <div class="form-group mt-4">   SubTotal:       {{cadorcamentos.subTotal}}  </div>
+              <div class="form-group mt-4">   Total:          {{cadorcamentos.total}} </div>
+              <div class="form-group mt-4">   Frete:          {{cadorcamentos.frete}}  </div>
+              <div class="form-group mt-4">   Taxas :         {{cadorcamentos.taxas}}  </div>
         
-
-          <input type="submit" class="btn btn-success" value="Salvar">
-
+              <input type="submit" class="btn btn-success" value="Salvar">
 
                 </form>
     <!-- /MAIN CONTENT -->

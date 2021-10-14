@@ -1,5 +1,13 @@
 
-    <!--sidebar end-->
+{% extends 'base.html' %}
+  
+
+ 
+{% block content %}
+
+
+   
+   <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
@@ -11,17 +19,18 @@
             <div class="col-lg-10 col-lg-offset-1">
               <div class="invoice-body">
                 <div class="pull-left">
-                  <h1>DASHIO</h1>
+                
+                  <h1>Web Monkey</h1>
                   <address>
-                <strong>Admin Theme, Inc.</strong><br>
+                <strong>Cuiaba - MT</strong><br>
                 795 Asome Ave, Suite 850<br>
-                New York, 94447<br>
-                <abbr title="Phone">P:</abbr> (123) 456-7890
+                CNPJ: 33.261.621.0001-88 <br>
+                <abbr title="Telefone">Telefone:</abbr> (65) 99800 - 7226
               </address>
                 </div>
                 <!-- /pull-left -->
                 <div class="pull-right">
-                  <h2>invoice</h2>
+                  <h2>Orcamento</h2>
                 </div>
                 <!-- /pull-right -->
                 <div class="clearfix"></div>
@@ -30,19 +39,19 @@
                 <br>
                 <div class="row">
                   <div class="col-md-9">
-                    <h4>Paul Smith</h4>
+                    <h4>Nome do Cliente</h4>
                     <address>
-                  <strong>Enterprise Corp.</strong><br>
+                  <strong>Dados do Cliente.</strong><br>
                   234 Great Ave, Suite 600<br>
                   San Francisco, CA 94107<br>
-                  <abbr title="Phone">P:</abbr> (123) 456-7890
+                  <abbr title="Phone">P:</abbr> TELEFONE DO CONTATO (123) 456-7890
                 </address>
                   </div>
                   <!-- /col-md-9 -->
                   <div class="col-md-3">
                     <br>
                     <div>
-                      <div class="pull-left"> INVOICE NO : </div>
+                      <div class="pull-left"> ORCAMENTO Nº : </div>
                       <div class="pull-right"> 000283 </div>
                       <div class="clearfix"></div>
                     </div>
@@ -60,31 +69,29 @@
                       <div class="clearfix"></div>
                     </div>
                   </div>
+                  
                   <!-- /invoice-body -->
                 </div>
                 <!-- /col-lg-10 -->
                 <table class="table">
                   <thead>
                     <tr>
-                      <th style="width:60px" class="text-center">QTY</th>
-                      <th class="text-left">DESCRIPTION</th>
-                      <th style="width:140px" class="text-right">UNIT PRICE</th>
+                      <th style="width:60px" class="text-center">QTD.</th>
+                      <th class="text-left">DESCRICAO</th>
+                      <th style="width:140px" class="text-right">VALOR UNITARIO</th>
                       <th style="width:90px" class="text-right">TOTAL</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="text-center">1</td>
-                      <td>Flat Pack Heritage</td>
-                      <td class="text-right">$429.00</td>
-                      <td class="text-right">$429.00</td>
+                              {% for dbs in db %}
+                    <tr>                     
+                      <td class="text-center">{{dbs.quantidade}}</td>
+                      <td>{{dbs.descricao}}</td>
+                      <td class="text-right">R${{dbs.precoUnitario}}</td>
+                      <td class="text-right">R${{dbs.total}}</td>
                     </tr>
-                    <tr>
-                      <td class="text-center">2</td>
-                      <td>Carry On Suitcase</td>
-                      <td class="text-right">$300.00</td>
-                      <td class="text-right">$600.00</td>
-                    </tr>
+                              {% endfor %}
+                   
                     <tr>
                       <td colspan="2" rowspan="4">
                         <h4>Terms and Conditions</h4>
@@ -105,12 +112,14 @@
                         <div class="well well-small green"><strong>Total</strong></div>
                       </td>
                       <td class="text-right"><strong>$1029.00</strong></td>
+                      
                     </tr>
                   </tbody>
                 </table>
                 <br>
                 <br>
               </div>
+                
               <!--/col-lg-12 mt -->
       </section>
       <!-- /wrapper -->
@@ -118,4 +127,6 @@
     <!-- /MAIN CONTENT -->
     <!--main content end-->
     <!--footer start-->
- 
+
+    {% load static %}
+ {% endblock %}

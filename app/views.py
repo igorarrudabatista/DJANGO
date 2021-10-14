@@ -4,7 +4,7 @@ from django.http import request
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from app.forms import CarrosForm, OrcamentosForm, VendedoresForm
-from app.models import Carros, Vendedores, Orcamentos
+from app.models import Orcamentos, Carros, Vendedores
 from django.core.paginator import Paginator
 from django.core.files.storage import FileSystemStorage
 
@@ -66,29 +66,37 @@ def cadvendedores(request):
 ###
 ### CADASTRO DE ORCAMENTOS
 ###
+
+@login_required
+def orcamentos(request):
+    return render(request,'orcamentos.html')
+
 @login_required
 def cadorcamentos(request):
-    data = {}
-    data ['cadorcamentos'] = OrcamentosForm()
-    return render (request, 'cad_orcamentos.html', data)
+     data = {}
+     search = request.GET.get('search')
+     if search:
+            data['db'] = Orcamentos.objects.filter(nome__icontains=search)
+     else:
+            data['db'] = Orcamentos.objects.all()
+            return render(request, 'orcamentos.html', data)
+
 
 @login_required
 def createorcamentos(request):
         if request.method == 'POST':
             form = OrcamentosForm(request.POST)
             if form.is_valid():
-                form.save()
-                return redirect('sucesso')
+               form.save()
+            return redirect('sucesso')
         else:
             form = OrcamentosForm()
         return render(request, 'cad_orcamentos.html', {
             'form': form
         })
-
 ###
 ### FIM CADASTRO DE ORCAMENTOS
 ###
-
 
 @login_required
 def createvendedores(request):
@@ -135,8 +143,8 @@ def display_image(request):
 
 @login_required
 def vendedores(request):
-    data = {}
-    search = request.GET.get('search')
+    data     = {}
+    search   = request.GET.get('search')
     if search:
         data['db'] = Vendedores.objects.filter(nome__icontains=search)
     else:
