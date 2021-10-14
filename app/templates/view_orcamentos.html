@@ -37,12 +37,12 @@
                 <br>
                 <div class="row">
                   <div class="col-md-9">
-                    <h4>Nome do Cliente</h4>
+                    <h4>{{db.nome_cliente}}</h4>
                     <address>
                   <strong>Dados do Cliente.</strong><br>
-                  234 Great Ave, Suite 600<br>
-                  San Francisco, CA 94107<br>
-                  <abbr title="Phone">P:</abbr> TELEFONE DO CONTATO (123) 456-7890
+             
+                
+                  <abbr title="Phone">Telefone:</abbr> {{db.telefone_cliente}}
                 </address>
                   </div>
                   <!-- /col-md-9 -->
@@ -55,8 +55,8 @@
                     </div>
                     <div>
                       <!-- /col-md-3 -->
-                      <div class="pull-left"> INVOICE DATE : </div>
-                      <div class="pull-right"> 15/03/14 </div>
+                      <div class="pull-left"> DATA: </div>
+                      <div class="pull-right"> {{db.data_orcamento}} </div>
                       <div class="clearfix"></div>
                     </div>
                     <!-- /row -->
@@ -84,9 +84,9 @@
                               
                     <tr>                     
                       <td class="text-center">{{db.quantidade}}</td>
-                      <td>{{dbs.descricao}}</td>
+                      <td>{{db.descricao}}</td>
                       <td class="text-right">R${{db.precoUnitario}}</td>
-                      <td class="text-right">R$'{{db.total}} * {{db.precoUnitario}}'</td>
+                      <td class="text-right">R${{db.total}} * {{db.precoUnitario}}</td>
                     </tr>
                             
                    

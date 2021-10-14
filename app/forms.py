@@ -8,7 +8,7 @@ from .models import *
 class OrcamentosForm(ModelForm):
     class Meta:
         model = Orcamentos
-        fields = ['quantidade', 'descricao', 'precoUnitario', 'subTotal', 'total', 'frete', 'taxas']
+        fields = ['quantidade', 'descricao', 'precoUnitario', 'subTotal', 'total', 'frete', 'taxas', 'nome_cliente', 'telefone_cliente', 'data_orcamento', 'validade_orcamento' ]
 
         widgets = {
             'quantidade':forms.TextInput(attrs={'class':'form-control'}),
@@ -18,6 +18,11 @@ class OrcamentosForm(ModelForm):
             'total':forms.TextInput(attrs={'class':'form-control'}),
             'frete':forms.TextInput(attrs={'class':'form-control'}),
             'taxas':forms.TextInput(attrs={'class':'form-control'}),
+            'validade_orcamento': forms.TextInput(attrs={'class':'form-control default-date-picker form-control-inline ' , 'placeholder': 'dd/mm/aaaa'}),
+            'data_orcamento':forms.TextInput(attrs={'class':'form-control default-date-picker form-control-inline ' , 'placeholder': 'dd/mm/aaaa'}),
+            'nome_cliente':forms.TextInput(attrs={'class':'form-control'}),
+            'telefone_cliente':forms.TextInput(attrs={'class':'form-control'}),
+           
             
         }
 

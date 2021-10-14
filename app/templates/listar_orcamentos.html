@@ -22,10 +22,10 @@
                 
                 <thead>
                   <tr>
-                    <th><i class="fa fa-bullhorn"></i> Nome</th>
-                    <th class="hidden-phone"><i class="fa fa-question-circle"></i> Data nascimento</th>
-                    <th><i class="fa fa-bookmark"></i> Função</th>
-                    <th><i class=" fa fa-edit"></i> Status</th>
+                    <th><i class="fa fa-bullhorn"></i> ID</th>
+                    <th class="hidden-phone"><i class="fa fa-question-circle"></i> Quantidade</th>
+                    <th><i class="fa fa-bookmark"></i> Descrição do produto</th>
+                    <th><i class=" fa fa-edit"></i> Preço Unitario</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -37,14 +37,13 @@
                     </td>
                     <td class="hidden-phone">{{dbs.quantidade}}</td>
                     <td>{{dbs.descricao}} </td>
-                    {% if dbs.total %}
-                    {%endif%}
-                    <td> 
-                    <td><span class="label label-info label-mini">Due</span></td>
+                 
+                    
+                      
+                    <td><span class="label label-info label-mini">R$  {{dbs.precoUnitario}}</span></td>
                     
 
                           <td> 
-                          
           <a href="/view_orcamentos/{{dbs.id}}/"  class="btn btn-success"> Visualizar </a>
           <a href="/edit/{{dbs.id}}/"   class="btn btn-primary"> Editar </a>
           <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel"> Deletar </a>

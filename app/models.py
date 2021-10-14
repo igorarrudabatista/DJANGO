@@ -14,7 +14,10 @@ class Orcamentos(models.Model):
     total           =   models.IntegerField()
     frete           =   models.IntegerField()
     taxas           =   models.IntegerField()
-
+    validade_orcamento  = models.CharField(max_length=12)
+    data_orcamento = models.CharField(max_length=12)
+    nome_cliente = models.CharField(max_length=250)
+    telefone_cliente = models.CharField(max_length=12)
 class Carros(models.Model):
     modelo          =   models.CharField(max_length=150)
     marca           =   models.CharField(max_length=100)

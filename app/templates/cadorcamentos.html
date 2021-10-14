@@ -28,6 +28,13 @@
 
       <form name="form" id="form" action="/createorcamentos/" method="post">
           {% csrf_token %}
+
+          <h3> <center> Dados do Cliente </h3> </h3>
+          <div class="form-group mt-4">   Nome Cliente:     {{cadorcamentos.nome_cliente}} </div>
+          <div class="form-group mt-4">   Telefone Cliente:     {{cadorcamentos.telefone_cliente}} </div>
+<hr>
+              <div class="form-group mt-4">   Data:     {{cadorcamentos.data_orcamento}} </div>
+              <div class="form-group mt-4">   Validade do Orçamento:     {{cadorcamentos.validade_orcamento}} </div>
               <div class="form-group mt-4">   Quantidade:     {{cadorcamentos.quantidade}} </div>
               <div class="form-group mt-4">   Descricao :     {{cadorcamentos.descricao}} </div>
               <div class="form-group mt-4">   Valor Unitario: {{cadorcamentos.precoUnitario}}  
